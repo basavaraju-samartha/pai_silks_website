@@ -1,42 +1,95 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  margin: 0;
+  font-family: 'Poppins';
+  background-image:url("./assets/backgroundimagenew.jpg") ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.filter-sort-button{
+  padding: 1.5vw;
+  margin: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 18vw;
+  background-color: #551920;
+  color:#FEDB87;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.filter-sort-button h4{
+  margin: 0;
+  padding: 0;
+}
+
+.app-wrapper {
+  position: relative;
+}
+
+.product-grid {
+  display: grid;
+  gap: 1.7rem;
+  padding: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  /* flex: 1;   */
+}
+
+@media screen and (max-width: 900px) {
+  .filter-sort-button{
+    width: 25vw;
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+@media screen and (max-width: 600px) {
+  .product-grid {
+      display: grid;
+      gap: 1rem;
+      padding: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      flex: 1;
+    }
+
+    .filter-sort-button{
+      width: 70%;
+      border-radius: 10px;
+      height: 3rem;
+      margin: 0;
+      background: linear-gradient(to right, #FEDB87, #BD7923) border-box,
+      transparent padding-box;
+      cursor: pointer;
+    }
+
+    .button-container{
+      border: 1px solid black;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      height: 3rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('./assets/footerbgimage.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+@media screen and (max-width: 380px) {
+  .product-grid {
+      display: grid;
+      gap: 1rem;
+      padding: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      flex: 1;
+    }
 }
