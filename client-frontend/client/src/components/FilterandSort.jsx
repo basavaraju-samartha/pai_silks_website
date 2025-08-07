@@ -73,7 +73,7 @@ const FilterAndSort = ({onFilterChange,onSortChange,categories,onClose,}) => {
               <img src={rightarrow} alt="" />
             </div>
             {isFilterSectionVisible && (
-              <div className="filter-section">
+              <div className="filter-section" onClick={(e) => e.stopPropagation()}>
                 <label>Price From: </label>
                 <input
                   type="text"
