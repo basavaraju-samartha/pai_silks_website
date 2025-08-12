@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ProductCard from './components/ProductCard';
 import FilterAndSort from './components/FilterandSort';
@@ -46,11 +46,30 @@ const App = () => {
     setIsDivOpen(false);
   };
 
+  //Add to cart
+
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (productsData) => {
+  setCartItems((prev) => {
+    const isItemInCart = prev.some((item) => item.id === productsData.id);
+      if (isItemInCart) {
+        return prev;
+      } else {
+        return [...prev, productsData];
+      }
+    });
+  };
+
+  const updateCart=(dynamicCartItem)=>{
+    setCartItems(dynamicCartItem)
+  }
+
   return (
     <>
-      <Header />
+      <Header cartItems={cartItems} onUpdate={updateCart} />
       <div className="button-container">
-        <button className='filter-sort-button' onClick={handleOpenDiv}><h4>Filter and Sort</h4></button>
+        <button className='filter-sort-button' onClick={()=>handleOpenDiv()}><h4>Filter and Sort</h4></button>
       </div>
       <div className='app-wrapper'>
         {isDivOpen &&(
@@ -63,7 +82,7 @@ const App = () => {
         )}
         <div className="product-grid">
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <ProductCard key={product.id} {...product} onAddToCart={() => handleAddToCart(product)} />
           ))}
         </div>
       </div>
