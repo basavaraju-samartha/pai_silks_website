@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductCard.css';
 import backgroundimage from '../assets/Rectangle.png'
 
-function ProductCard({ name, main_price,discounted_price}) {
+function ProductCard({ name, main_price, discounted_price,image, onAddToCart}) {
   function alertMsg(event){
     alert("Clicked on " +event.target);
   }
@@ -11,12 +11,13 @@ function ProductCard({ name, main_price,discounted_price}) {
     alert(`${name} added to cart`);
     // console.log(event.this);
     event.stopPropagation()
+    onAddToCart();
   }
 
   return (
     <div className="product-card" onClick={alertMsg}>
       <div className='imagecontainer'>
-        <img src={backgroundimage} alt="Product" />
+        <img src={image} alt="Product" />
       </div>
       <h4>{name}</h4>
       <div className='priceandbutton'>

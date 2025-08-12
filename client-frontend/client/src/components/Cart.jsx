@@ -53,33 +53,31 @@ const Cart = ({ onClose, cartItems, onUpdate }) => {
             <p>No items in cart</p>
           ) : (
             dynamicCartItem.map((item, index) => (
-              <>
-                <CartItem
-                  key={item.id}
-                  item={item}
-                  index={index}
-                  onQuantityChange={changeQuantity}
-                  onRemove={handleProductRemove}
-                />
-
-                <div className="total-bill">
-                  <h3>Total bill</h3>
-                  <div className="total-cart-bill">
-                    <h3>Order Amount</h3>
-                    <h3>₹ {total}</h3>
-                  </div>
-                  <div className="delivery-bill">
-                    <h3>Delivery Fee</h3>
-                    <h3>₹ 99</h3>
-                  </div>
-                  <div className="grand-total">
-                    <h3>Grand Total</h3>
-                    <h3>₹ {total + 99}</h3>
-                  </div>
-                </div>
-              </>
+              <CartItem
+                key={item.id}
+                item={item}
+                index={index}
+                onQuantityChange={changeQuantity}
+                onRemove={handleProductRemove}
+              />
             ))
           )}
+
+          <div className="total-bill">
+            <h3>Total bill</h3>
+            <div className="total-cart-bill">
+              <h3>Order Amount</h3>
+              <h3>₹ {total}</h3>
+            </div>
+            <div className="delivery-bill">
+              <h3>Delivery Fee</h3>
+              <h3>₹ 99</h3>
+            </div>
+            <div className="grand-total">
+              <h3>Grand Total</h3>
+              <h3>₹ {total + 99}</h3>
+            </div>
+          </div>
         </div>
 
         {/* Add to cart Button */}

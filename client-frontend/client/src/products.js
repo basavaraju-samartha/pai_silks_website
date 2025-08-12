@@ -6,7 +6,8 @@ const products = [
     main_price: 2999,
     discounted_price: 999,
     image: "../src/assets/Rectangle.png",
-    category: "Mysore silk"
+    category: "Mysore silk",
+    quantity:0,
   },
   {
     id: 2,
@@ -14,8 +15,9 @@ const products = [
     description: "Pure Kanchipuram with golden zari",
     main_price: 4999,
     discounted_price: 2999,
-    image: "https://via.placeholder.com/200x200?text=Kanchipuram",
-    category: "Kanchipuram silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Kanchipuram silk",
+    quantity:0,
   },
   {
     id: 3,
@@ -23,8 +25,9 @@ const products = [
     description: "Comfortable cotton silk for daily wear",
     main_price: 7999,
     discounted_price: 4999,
-    image: "https://via.placeholder.com/200x200?text=Cotton+Silk",
-    category: "Cotton silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Cotton silk",
+    quantity:0,
   },
   {
     id: 4,
@@ -32,8 +35,9 @@ const products = [
     description: "Rich traditional Banarasi design",
     main_price: 1999,
     discounted_price: 999,
-    image: "https://via.placeholder.com/200x200?text=Banarasi+Silk",
-    category: "Banarasi silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Banarasi silk",
+    quantity:0,
   },
   {
     id: 5,
@@ -41,8 +45,9 @@ const products = [
     description: "Handloom tussar silk with unique texture",
     main_price: 3999,
     discounted_price: 1999,
-    image: "https://via.placeholder.com/200x200?text=Tussar+Silk",
-    category: "Tussar silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Tussar silk",
+    quantity:0,
   },
   {
     id: 6,
@@ -51,7 +56,8 @@ const products = [
     main_price: 2999,
     discounted_price: 999,
     image: "../src/assets/Rectangle.png",
-    category: "Mysore silk"
+    category: "Mysore silk",
+    quantity:0,
   },
   {
     id: 7,
@@ -59,8 +65,9 @@ const products = [
     description: "Pure Kanchipuram with golden zari",
     main_price: 4999,
     discounted_price: 2999,
-    image: "https://via.placeholder.com/200x200?text=Kanchipuram",
-    category: "Kanchipuram silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Kanchipuram silk",
+    quantity:0,
   },
   {
     id: 8,
@@ -68,8 +75,9 @@ const products = [
     description: "Comfortable cotton silk for daily wear",
     main_price: 7999,
     discounted_price: 4999,
-    image: "https://via.placeholder.com/200x200?text=Cotton+Silk",
-    category: "Cotton silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Cotton silk",
+    quantity:0,
   },
   {
     id: 9,
@@ -77,8 +85,9 @@ const products = [
     description: "Rich traditional Banarasi design",
     main_price: 1999,
     discounted_price: 999,
-    image: "https://via.placeholder.com/200x200?text=Banarasi+Silk",
-    category: "Banarasi silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Banarasi silk",
+    quantity:0,
   },
   {
     id: 10,
@@ -86,8 +95,9 @@ const products = [
     description: "Handloom tussar silk with unique texture",
     main_price: 3999,
     discounted_price: 1999,
-    image: "https://via.placeholder.com/200x200?text=Tussar+Silk",
-    category: "Tussar silk"
+    image: "../src/assets/Rectangle.png",
+    category: "Tussar silk",
+    quantity:0,
   },
 ];
 
