@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Cart.css";
 import CartItem from "./CartItem";
+import { useLocation, useNavigate } from "react-router-dom";
+import { CartContext } from "../CartContext";
+
 
 const Cart = ({ onClose, cartItems, onUpdate }) => {
-  // We'll store quantity for each item separately
-  const [dynamicCartItem, setDynamicCartItem] = useState([]);
+  const navigate = useNavigate();
+
+  const { dynamicCartItem, setDynamicCartItem, total, setTotal,} = useContext(CartContext);
 
   // Initialize cart items with quantity = 1 when loaded
   useEffect(() => {
@@ -35,10 +39,17 @@ const Cart = ({ onClose, cartItems, onUpdate }) => {
   };
 
   // Calculate total based on quantity * unit price
-  const total = dynamicCartItem.reduce(
-    (acc, item) => acc + item.quantity * item.discounted_price,
-    0
-  );
+  useEffect(() => {
+    setTotal(dynamicCartItem.reduce(
+      (acc, item) => acc + item.quantity * item.discounted_price,0
+    ));
+  }, [dynamicCartItem])
+
+  const totalcheckdemo=()=>{
+    dynamicCartItem.map((item)=>(console.log(item,item.quantity)));
+    console.log(dynamicCartItem);    
+    console.log(total+99);    
+  }
 
   return (
     <div className="cart-wrapper">
@@ -82,7 +93,7 @@ const Cart = ({ onClose, cartItems, onUpdate }) => {
 
         {/* Add to cart Button */}
         <div className="checkout-button">
-          <button className="checkout">
+          <button className="checkout" onClick={()=>{navigate("/checkout")}}>
             <h4>Proceed to Checkout</h4>
           </button>
         </div>

@@ -1,10 +1,14 @@
 .cart-item{
   border-bottom: 1px solid black;
-  display: flex;
+  display: grid;
+  grid-template-columns: 30% 70%;
   /* height: 4vh ; */
 }
 
 .cart-item-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 8vw;
   width: 8vw;
   overflow: hidden;
@@ -23,6 +27,8 @@
 .cart-item-description{
   padding: 0 0.4rem;
 }
+
+
 
 .increment-and-remove-button,.increment-and-decrement{
   display: flex;

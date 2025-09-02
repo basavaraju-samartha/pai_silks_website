@@ -3,23 +3,22 @@ import './Header.css';
 import logo from '../assets/logo.svg'
 import heart from '../assets/Heart.svg'
 import cart from '../assets/ShoppingBag.svg'
-import search from '../assets/Loupe.svg'
 import filtersort from '../assets/List.svg'
-import Profile from'./Profile'
+import ProfileSection from'./ProfileSection'
 import Cart from "./Cart"
 import WishList from "./WishList"
 
-function Header({ cartItems,onUpdate }) {
+function Header({ cartItems,onUpdate, wishListItems, onWishListUpdate }) {
 
   //variables for Profile
 
-  const [isProfileOpen, setisProfileOpen] = useState(false);
-    const handleOpenProfile = () => {
-      setisProfileOpen(true);
+  const [isProfileSectionOpen, setisProfileSectionOpen] = useState(false);
+    const handleOpenProfileSection = () => {
+      setisProfileSectionOpen(true);
     };
   
-    const handleCloseProfile = () => {
-      setisProfileOpen(false);
+    const handleCloseProfileSection = () => {
+      setisProfileSectionOpen(false);
     };
 
     //variables for wishList
@@ -51,7 +50,7 @@ function Header({ cartItems,onUpdate }) {
         <div
           className="profile-menu"
           onClick={() => {
-            handleOpenProfile();
+            handleOpenProfileSection();
             handleCloseWishList();
             handleCloseCart();
           }}>
@@ -60,16 +59,13 @@ function Header({ cartItems,onUpdate }) {
         <div className="logo">
           <img src={logo}></img>
         </div>
-        <div className="searchcartwish">
-          <div className="search">
-            <img src={search}></img>
-          </div>
+        <div className="cartwish">
           <div
             className="wishlist"
             onClick={() => {
               handleOpenWishList();
               handleCloseCart();
-              handleCloseProfile();
+              handleCloseProfileSection();
             }}>
             <img src={heart}></img>
           </div>
@@ -77,15 +73,15 @@ function Header({ cartItems,onUpdate }) {
             className="cart"
             onClick={() => {
               handleCloseWishList();
-              handleCloseProfile();
+              handleCloseProfileSection();
               handleOpenCart();
             }}>
             <img src={cart}></img>
           </div>
         </div>
       </header>
-      {isProfileOpen && <Profile onClose={handleCloseProfile} />}
-      {isWishListOpen && <WishList onClose={handleCloseWishList} />}
+      {isProfileSectionOpen && <ProfileSection onClose={handleCloseProfileSection} />}
+      {isWishListOpen && <WishList onClose={handleCloseWishList} wishListItems={wishListItems} onWishListUpdate={onWishListUpdate}/>}
       {isCartOpen && <Cart onClose={handleCloseCart} cartItems={cartItems} onUpdate={onUpdate} />}
     </>
   );

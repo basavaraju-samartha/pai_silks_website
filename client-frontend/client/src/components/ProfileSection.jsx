@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "./Profile.css";
+import "./ProfileSection.css";
 import rightarrow from '../assets/rightarrow.svg'
-const Profile = ({onClose}) => {
+import { useLocation, useNavigate } from "react-router-dom";
 
+const Profile = ({onClose}) => {
+  const navigate = useNavigate();
 
   return (
     <div className="profile-wrapper">
@@ -12,7 +14,7 @@ const Profile = ({onClose}) => {
           <button className="close-button" onClick={onClose}></button>
         </div>
 
-        <div className="profile-navigation-options">
+        <div className="profile-navigation-options" onClick={(e)=>{navigate("/my-orders");e.stopPropagation()}}>
           {/* My Orders */}
           <div className="my-orders">
             <div className="navigation-name">
@@ -22,7 +24,7 @@ const Profile = ({onClose}) => {
           </div>
 
           {/* About Us */}
-          <div className="about-us">
+          <div className="about-us" onClick={(e)=>{navigate("/about-us");e.stopPropagation()}}>
             <div className="navigation-name">
               <h3>About Us</h3>
               <img src={rightarrow} alt="" />
@@ -30,7 +32,7 @@ const Profile = ({onClose}) => {
           </div>
 
           {/* Sort Option */}
-          <div className="my-profile-sub-navigation">
+          <div className="my-profile-sub-navigation" onClick={(e)=>{navigate("/my-profile");e.stopPropagation()}}>
             <div className="navigation-name">
               <h3>My Profile</h3>
               <img src={rightarrow} alt="" />

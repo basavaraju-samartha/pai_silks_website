@@ -24,7 +24,7 @@ function CartItem({ item, index, onQuantityChange, onRemove }) {
   return (
     <div key={index} className="cart-item">
       <div className="cart-item-image">
-        <img src={item.image} alt="" />
+        <img src={item.image1} alt="" />
       </div>
       <div className="cart-item-description">
         <div className="item-name">

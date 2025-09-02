@@ -12,7 +12,7 @@ function Footer() {
             Subscribe to our newsletter!
           </h2>
           <form className="form" action="/submit-data" method="POST">
-            <input className="emailplace" type="email" id="email" name="email" placeholder="Your Email address" required></input>
+            <input className="emailplace" type="email"id="footer_mail" placeholder="Your Email address" required></input>
             <button className="emailbutton" type="submit">Subscribe</button>
           </form>
         </div>

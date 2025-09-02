@@ -5,6 +5,8 @@ import ProductCard from './components/ProductCard'
 import CategoryCard from './components/Categorycard.jsx';
 import ReviewCard from './components/ReviewCard.jsx';
 // import App from './App.jsx'
+import ViewProductPage from './components/ViewProductPage'; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import frame from './assets/heroframe.svg'
 import heroimage1 from './assets/heroimage1.svg'
 import wedding from './assets/weddingcoll.svg'
@@ -17,11 +19,14 @@ import bestsellerheart from "./assets/bestsellerheart.svg"
 import trendingProducts from "./products.js";
 import { categories } from "./categoryData";
 import reviews from "./reviews.js";
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { CartContext } from "./CartContext.jsx";
 
 function Homepage() {
-    const topFourProducts = trendingProducts.slice(0, 5);
+    const navigate = useNavigate();
+    const { cartItems, setCartItems,wishListItems, setWishListItems, handleAddToCart } = useContext(CartContext);
+    const topFourProducts = trendingProducts.slice(0, 9);
     const [mainSaree, rem1, rem2, rem3] = trendingProducts;
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,9 +41,14 @@ function Homepage() {
       return () => clearInterval(interval); // cleanup
     }, []);
 
+    const updateCart = (dynamicCartItem) => setCartItems(dynamicCartItem);
+    const updateWishList = (dynamicWishListItem) => setWishListItems(dynamicWishListItem);
+
+    
+
   return (
     <>
-      <Header />
+      <Header cartItems={cartItems} onUpdate={updateCart} wishListItems={wishListItems} onWishListUpdate={updateWishList}/>
       <div className="herosection">
         <img className="upframe" src={frame}></img>
         <div className="heroimagesection">
@@ -46,7 +56,7 @@ function Homepage() {
         </div>
         <img className="downframe" src={frame}></img>
         <h1 className="headerdesc"><u>Check out our Collections</u></h1>
-        <div className="catdiv">
+        <div className="catdiv" onClick={()=>navigate("/shop")}>
           <div className="category">
             <img src={wedding}></img>
             <h2>Wedding collections</h2>
@@ -76,7 +86,7 @@ function Homepage() {
       <div className="trending-section">
         <div className="product-grid-homepage">
           {topFourProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <ProductCard key={product.id} {...product} onAddToCart={() => handleAddToCart(product)} />
           ))}
         </div>
       </div>
@@ -85,11 +95,11 @@ function Homepage() {
           <h1 className="bestsellerheader"><u>Best Sellers</u></h1>
           <div className='bestseller-saree-section'>
             <div className='rem-saree'>
-              <div className='rem-saree-1'><img src={mainSaree.image}/></div>
-              <div className='rem-saree-2'><img src={mainSaree.image}/></div>
-              <div className='rem-saree-3'><img src={mainSaree.image}/></div>
+              <div className='rem-saree-1'><img src={mainSaree.image1}/></div>
+              <div className='rem-saree-2'><img src={mainSaree.image1}/></div>
+              <div className='rem-saree-3'><img src={mainSaree.image1}/></div>
             </div>
-            <div className='main-saree'><img src={mainSaree.image}/></div>
+            <div className='main-saree'><img src={mainSaree.image1}/></div>
             <div className='main-saree-desc'>
               <div className='sub-desc-heart'><img src={bestsellerheart} alt="" /></div>
               <div className='sub-desc-name'><h1>{mainSaree.name}</h1></div>

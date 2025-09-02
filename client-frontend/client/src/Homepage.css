@@ -1,6 +1,6 @@
-body {
+body,:root{
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Poppins';
   background-image:url("./assets/backgroundimagenew.jpg") ;
   background-repeat: no-repeat;
   background-size: cover;
@@ -80,6 +80,7 @@ body {
 }
 
 .newcollheader{
+    font-family: 'Poppins';
     font-size: 3vw;
     margin: 1%;
     padding: 2%;
@@ -103,11 +104,11 @@ body {
   display: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 3000px) {
     .product-grid-homepage > * {
         flex: 0 0 auto;
         min-width: 150px;
-        width: clamp(150px, 25vw, 200px); 
+        width: clamp(150px, 25vw, 250px); 
     }
 }
 
@@ -240,6 +241,7 @@ body {
 }
 
 .saree-categories{
+    font-family: 'Poppins';
     text-align: center;
     color: #68232B;
 
@@ -267,6 +269,7 @@ body {
 }
 
 .customerReview{
+    font-family: 'Poppins';
     padding: 2vw;
 }
 
