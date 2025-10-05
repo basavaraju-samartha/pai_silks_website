@@ -61,8 +61,8 @@ const AdminHomePage = () => {
           <div><Notifications/></div>
           <div>Admin</div>
         </div>
-        <div className=' h-[90%] bg-[#FFE9CC] overflow-y-auto'>
-          <div className='h-[150rem]'>{renderView()}</div>
+        <div className=' h-[90%] bg-[#FFE9CC] overflow-y-auto scrollbar-hide'>
+          <div className=''>{renderView()}</div>
         </div>
       </div>
     </div>

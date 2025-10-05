@@ -13,8 +13,7 @@ function AdminLogin() {
     e.preventDefault(); // stop form from reloading page
 
     if (
-      loginDetails[0].email === email &&
-      loginDetails[0].password === password
+      (loginDetails[0].email === email) && (loginDetails[0].password === password)
     ) {
       alert("Log In successful!");
       navigate("/admin-home-page"); // 👈 redirect to ItemManagement page

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import RecentOrders from "@/components/RecentOrders"
+import RecentOrders from "@/components/RecentOrders/RecentOrders"
 
 import ThreeDotts from "../assets/svg/ThreeDots.svg?react"
 import OrderBag from "../assets/svg/OrderBag.svg?react"
