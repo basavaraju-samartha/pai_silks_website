@@ -81,5 +81,36 @@ class Cmds {
             throw err;
         }
     }
+
+    async getOrderStats() {
+        try {
+            const [rows] = await pool.query(sqlqueries.dashBoard.getOrderStats);
+            return rows[0]; // single aggregated row
+        } catch (error) {
+            console.error("Error in getOrderStats:", error);
+            throw error;
+        }
+    }
+
+    async getBestSellers() {
+        try {
+            const [rows] = await pool.query(sqlqueries.dashBoard.getBestSellers);
+            return rows; // return full list
+        } catch (error) {
+            console.error("Error in getBestSellers:", error);
+            throw error;
+        }
+    }
+
+    async getRecentOrders() {
+        try {
+            const [rows] = await pool.query(sqlqueries.dashBoard.getRecentOrders);
+            return rows; // return full list
+        } catch (error) {
+            console.error("Error in getRecentOrders:", error);
+            throw error;
+        }
+    }
 }
+
 module.exports = new Cmds();
