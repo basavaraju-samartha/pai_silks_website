@@ -1,5 +1,5 @@
 const dashboardDbOps = require('../../dbOps/adminDbOps');
-const appConstants = require('../../appConstants');
+const appConstants = require('../../constants/appConstants');
 
 async function getOrderStats() {
     try {
