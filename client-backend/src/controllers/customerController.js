@@ -3,6 +3,7 @@ const customerLoginManager = require('../components/customerLoginManager/custome
 const utils = require('../utils/utils');
 const appDefines = require('../constants/appDefines');
 const CookiesKey = require('../constants/cookieKeys');
+const productManager = require('../components/productManager/productManager')
 
 // customerController.js
 exports.customerLogin = async (req, res) => {
@@ -116,6 +117,25 @@ exports.customerLogin = async (req, res) => {
     return res.status(error.httpCode || 500).json({
       message: error.message || 'Login failed',
       localeStr: 'msg.error.loginFailed',
+    });
+  }
+};
+
+
+exports.getAllCollections = async (req, res) => {
+  try {
+    const collections = await productManager.getAllCollections();
+
+    return res.status(200).json({
+      success: true,
+      data: collections,
+      message: "Collections fetched successfully",
+    });
+  } catch (error) {
+    console.error("Error in getAllCollections Controller:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Failed to fetch collections",
     });
   }
 };

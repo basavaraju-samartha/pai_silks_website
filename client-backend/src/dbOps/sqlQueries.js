@@ -8,7 +8,13 @@ const sqlqueries = {
     },
 
     product: {
-        insertProduct: `INSERT INTO product (name, description, category, material, product_code, product_wash_care, regular_price, selling_price, saree_length) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    }
+    
+    getAllCollections: `
+      SELECT DISTINCT collection 
+      FROM product 
+      WHERE is_deleted = 0 
+      ORDER BY collection;
+    `,
+  }
 };
 (module.exports = sqlqueries);
