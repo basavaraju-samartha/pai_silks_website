@@ -64,6 +64,19 @@ class CustomerCmds {
       throw err;
     }
   }
+
+
+  // get collections
+  async getAllCollections() {
+    try {
+      const [rows] = await pool.query(sqlqueries.product.getAllCollections);
+      return rows;
+    } catch (err) {
+      console.error("Error in getAllCollections:", err);
+      throw err;
+    }
+  }
+  
 }
 
 module.exports = new CustomerCmds();
