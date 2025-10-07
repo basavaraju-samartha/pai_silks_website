@@ -166,3 +166,29 @@ exports.getRecentOrders = async (req, res) => {
     return utils.sendError(res, error);
   }
 };
+
+exports.getCategoryWiseCount = async (req, res) => {
+    try {
+        const result = await productManager.getCategoryWiseCount();
+        res.status(200).json({
+            success: true,
+            data: result
+        });
+    } catch (error) {
+        console.error("Error in getCategoryWiseCount Controller:", error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+exports.getAllProductDetails = async (req, res) => {
+    try {
+        const result = await productManager.getAllProductDetails();
+        res.status(200).json({
+            success: true,
+            data: result
+        });
+    } catch (error) {
+        console.error("Error in getAllProductDetails Controller:", error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};

@@ -69,6 +69,7 @@ class Cmds {
             await pool.query(sqlqueries.product.insertProduct, [productData.name,
             productData.description || null,
             productData.category || null,
+            productData.collection || null,
             productData.material || null,
             productData.product_code || null,
             productData.product_wash_care || null,
@@ -109,6 +110,26 @@ class Cmds {
         } catch (error) {
             console.error("Error in getRecentOrders:", error);
             throw error;
+        }
+    }
+
+    async getCategoryWiseCount() {
+        try {
+            const [rows] = await pool.query(sqlqueries.product.getCategoryWiseCount);
+            return rows;
+        } catch (err) {
+            console.error("Error in getCategoryWiseCount:", err);
+            throw err;
+        }
+    }
+
+    async getAllProductDetails() {
+        try {
+            const [rows] = await pool.query(sqlqueries.product.getAllProductDetails);
+            return rows;
+        } catch (err) {
+            console.error("Error in getAllProductDetails:", err);
+            throw err;
         }
     }
 }

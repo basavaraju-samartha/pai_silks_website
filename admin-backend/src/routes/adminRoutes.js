@@ -11,4 +11,8 @@ router.get('/get-bestSeller-list', adminController.getBestSellerList);
 
 router.get('/get-recent-orders', adminController.getRecentOrders);
 
+router.get('/get-category-count', adminController.getCategoryWiseCount);
+
+router.get('/get-all-product-details', adminController.getAllProductDetails);
+
 module.exports = router;
