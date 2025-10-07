@@ -1,10 +1,10 @@
 const adminAuthManager = require('../components/adminLoginManager/adminAuthManager');
 const productManager = require('../components/productManager/productManager')
 const adminLoginManager = require('../components/adminLoginManager/adminLoginManager');
+const dashBoardManager = require('../components/dashBoardManager/dashBoardManager')
 const utils = require('../utils/utils');
-const appConstants = require('../constants/appConstants');
 const appDefines = require('../constants/appDefines');
-const CookiesKey = require('../constants/cookieKeys'); // Assuming you have this
+const CookiesKey = require('../constants/cookieKeys');
 // adminController.js
 
 // adminController.js
@@ -137,4 +137,32 @@ exports.createProduct = async (req, res) => {
   }
 };
 
+exports.getOrderStats = async (req, res) => {
+  try {
+    const result = await dashBoardManager.getOrderStats();
+    return utils.sendResponse(res, result);
+  } catch (error) {
+    console.error("Error in getOrderStats:", error);
+    return utils.sendError(res, error);
+  }
+};
 
+exports.getBestSellerList = async (req, res) => {
+  try {
+    const result = await dashBoardManager.getBestSellers();
+    return utils.sendResponse(res, result);
+  } catch (error) {
+    console.error("Error in getBestSellerList:", error);
+    return utils.sendError(res, error);
+  }
+};
+
+exports.getRecentOrders = async (req, res) => {
+  try {
+    const result = await dashBoardManager.getRecentOrders();
+    return utils.sendResponse(res, result);
+  } catch (error) {
+    console.error("Error in getRecentOrders:", error);
+    return utils.sendError(res, error);
+  }
+};
