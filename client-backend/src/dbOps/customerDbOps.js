@@ -76,6 +76,19 @@ class CustomerCmds {
       throw err;
     }
   }
+
+  // ✅ NEW: Get all best sellers (includes stock + primary image)
+  async getBestSellers(limit = 6) {
+    try {
+      const [rows] = await pool.query(sqlqueries.product.getBestSellers, [limit]);
+      return rows;
+    } catch (err) {
+      console.error("Error in getBestSellers:", err);
+      throw err;
+    }
+  }
+  
+
   
 }
 

@@ -9,4 +9,8 @@ router.post('/customer-login', customerController.customerLogin);
 // To get the collections
 router.get('/collections', customerController.getAllCollections);
 
+//To get bestseller collections
+router.get('/bestsellers', customerController.getBestSellers);
+
+
 module.exports = router;

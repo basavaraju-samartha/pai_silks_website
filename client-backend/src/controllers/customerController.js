@@ -139,3 +139,22 @@ exports.getAllCollections = async (req, res) => {
     });
   }
 };
+
+
+// ---------------------- GET BESTSELLERS ----------------------
+exports.getBestSellers = async (req, res) => {
+  try {
+    const bestSellers = await productManager.getBestSellers();
+    return res.status(200).json({
+      success: true,
+      data: bestSellers,
+      message: 'Bestsellers fetched successfully',
+    });
+  } catch (error) {
+    console.error('Error in getBestSellers Controller:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || 'Failed to fetch bestsellers',
+    });
+  }
+};
