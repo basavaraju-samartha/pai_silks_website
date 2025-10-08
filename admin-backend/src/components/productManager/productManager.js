@@ -8,6 +8,16 @@ const createProduct = async (productData) => {
     return await dbCmds.createProduct(productData);
 };
 
+const getCategoryWiseCount = async () => {
+    return await dbCmds.getCategoryWiseCount();
+};
+
+const getAllProductDetails = async () => {
+    return await dbCmds.getAllProductDetails();
+};
+
 module.exports = {
     createProduct,
+    getCategoryWiseCount,
+    getAllProductDetails
 };
