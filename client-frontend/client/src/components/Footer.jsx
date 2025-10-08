@@ -33,10 +33,15 @@ function Footer() {
           </div>
         </div>
       </footer>
-      <div className="socialmedia">
-        <a href="" className="socialLinks"><img src={facebook} alt="" /></a>
-        <a href="https://www.instagram.com/pai_silks_hassan?igsh=MTZuYnZnMWthc2s3dA==" className="socialLinks"><img src={instagram} alt="" /></a>
-        <a href="" className="socialLinks"><img src={whatsapp} alt="" /></a>
+      <div className="gst-footer">
+        <div className="socialmedia">
+          <p>Copyright © 2025 SHRIDHARA VENKATARAMANA PAI. All Rights Reserved</p>
+        </div>
+        <div className="socialmedia">
+          <a href="" className="socialLinks"><img src={facebook} alt="" /></a>
+          <a href="https://www.instagram.com/pai_silks_hassan?igsh=MTZuYnZnMWthc2s3dA==" className="socialLinks"><img src={instagram} alt="" /></a>
+          <a href="" className="socialLinks"><img src={whatsapp} alt="" /></a>
+        </div>
       </div>
     </>
   );
