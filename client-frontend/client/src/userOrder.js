@@ -1,3 +1,5 @@
+import rectangleImage from "./assets/Rectangle.png";
+
 export const orders = [
   {
     orderId: 1,
@@ -6,7 +8,7 @@ export const orders = [
     name: "Kanchipuram Silk Saree",
     price: 2000,
     quantity: 1,
-    imageUrl: "../src/assets/Rectangle.png",
+    imageUrl: rectangleImage,
     orderDate: "2025-08-01",
   },
   {
@@ -16,7 +18,7 @@ export const orders = [
     name: "Mysore Silk Saree",
     price: 1200,
     quantity: 5,
-    imageUrl: "../src/assets/Rectangle.png",
+    imageUrl: rectangleImage,
     orderDate: "2025-08-01",
   },
   {
@@ -26,7 +28,7 @@ export const orders = [
     name: "Silk Saree",
     price: 4999,
     quantity: 2,
-    imageUrl: "../src/assets/Rectangle.png",
+    imageUrl: rectangleImage,
     orderDate: "2025-04-01",
   },
   {
@@ -36,7 +38,7 @@ export const orders = [
     name: "Mysore Silk Saree",
     price: 1200,
     quantity: 4,
-    imageUrl: "../src/assets/Rectangle.png",
+    imageUrl: rectangleImage,
     orderDate: "2025-05-01",
   },
   {
@@ -46,7 +48,7 @@ export const orders = [
     name: "Kanjivaram Silk Saree",
     price: 1200,
     quantity: 4,
-    imageUrl: "../src/assets/Rectangle.png",
+    imageUrl: rectangleImage,
     orderDate: "2025-06-01",
   }
 ];
