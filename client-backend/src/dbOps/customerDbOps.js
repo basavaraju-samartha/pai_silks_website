@@ -100,6 +100,28 @@ async getAllCategories() {
   }
 }
 
+
+// Get product by ID with all images
+async getProductByIdWithImages(productId) {
+  try {
+    const [rows] = await pool.query(
+      sqlqueries.product.getProductByIdWithImages,
+      [productId]
+    );
+
+    if (rows.length === 0) return null;
+
+    // Convert images string to array
+    const product = rows[0];
+    product.images = product.images ? product.images.split(',') : [];
+
+    return product;
+  } catch (err) {
+    console.error("Error in getProductByIdWithImages:", err);
+    throw err;
+  }
+}
+
   
 }
 

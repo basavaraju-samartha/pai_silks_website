@@ -177,3 +177,34 @@ exports.getAllCategories = async (req, res) => {
     });
   }
 };
+
+
+// ---------------------- GET PRODUCT BY ID ----------------------
+exports.getProductById = async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    // Call productManager to get product details with images
+    const product = await productManager.getProductById(productId);
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found',
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: product,
+      message: 'Product fetched successfully',
+    });
+  } catch (error) {
+    console.error('Error in getProductById Controller:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || 'Failed to fetch product',
+    });
+  }
+};
+

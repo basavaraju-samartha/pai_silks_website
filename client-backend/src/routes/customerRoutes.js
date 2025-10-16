@@ -16,5 +16,9 @@ router.get('/bestsellers', customerController.getBestSellers);
 router.get('/categories', customerController.getAllCategories);
 
 
+//To get productbyID
+router.get('/:productId', customerController.getProductById);
+
+
 
 module.exports = router;

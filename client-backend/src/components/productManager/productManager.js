@@ -36,10 +36,22 @@ const getAllCategories = async () => {
 };
 
 
+// ✅ New: Get a single product by ID with all images
+const getProductById = async (productId) => {
+  try {
+    const product = await dbCmds.getProductByIdWithImages(productId);
+    return product; 
+  } catch (err) {
+    console.error("Error in productManager.getProductById:", err);
+    throw err;
+  }
+};
+
 
 
 module.exports = {
   getAllCollections,
   getBestSellers,
   getAllCategories,
+  getProductById,
 };
