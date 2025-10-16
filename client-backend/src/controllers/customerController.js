@@ -158,3 +158,22 @@ exports.getBestSellers = async (req, res) => {
     });
   }
 };
+
+// ---------------------- GET ALL CATEGORIES ----------------------
+exports.getAllCategories = async (req, res) => {
+  try {
+    const categories = await productManager.getAllCategories();
+
+    return res.status(200).json({
+      success: true,
+      data: categories,
+      message: "Categories fetched successfully",
+    });
+  } catch (error) {
+    console.error("Error in getAllCategories Controller:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Failed to fetch categories",
+    });
+  }
+};

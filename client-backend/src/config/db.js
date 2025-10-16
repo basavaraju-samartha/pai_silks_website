@@ -4,7 +4,7 @@ require('dotenv').config();
 const pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "admin123",
+  password: "",
   database: "db",
   waitForConnections: true,
   connectionLimit: 10,

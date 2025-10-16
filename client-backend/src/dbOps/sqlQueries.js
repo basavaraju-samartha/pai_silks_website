@@ -16,6 +16,13 @@ const sqlqueries = {
       ORDER BY collection;
     `,
 
+    getAllCategories: `
+      SELECT DISTINCT category 
+      FROM product 
+      WHERE is_deleted = 0 
+      ORDER BY category;
+    `,
+
     // ✅ Get Bestsellers (includes product, stock, and primary image)
     getBestSellers: `
       SELECT 

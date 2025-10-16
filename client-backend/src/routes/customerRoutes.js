@@ -12,5 +12,9 @@ router.get('/collections', customerController.getAllCollections);
 //To get bestseller collections
 router.get('/bestsellers', customerController.getBestSellers);
 
+//To get the categories
+router.get('/categories', customerController.getAllCategories);
+
+
 
 module.exports = router;

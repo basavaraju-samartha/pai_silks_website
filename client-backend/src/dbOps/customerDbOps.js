@@ -89,6 +89,17 @@ class CustomerCmds {
   }
   
 
+  // Get all categories
+async getAllCategories() {
+  try {
+    const [rows] = await pool.query(sqlqueries.product.getAllCategories);
+    return rows;
+  } catch (err) {
+    console.error("Error in getAllCategories:", err);
+    throw err;
+  }
+}
+
   
 }
 

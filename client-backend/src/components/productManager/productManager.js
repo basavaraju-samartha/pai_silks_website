@@ -22,7 +22,24 @@ const getBestSellers = async () => {
   }
 };
 
+const getAllCategories = async () => {
+  try {
+    // 1. Await the database operation and store the result in a variable
+    const categories = await dbCmds.getAllCategories();
+    
+    // 2. Return the stored result
+    return categories; 
+  } catch (err) { // Use 'err' or 'error' for consistency, here 'err' matches the example
+    console.error("Error in productManager.getAllCategories:", err);
+    throw err;
+  }
+};
+
+
+
+
 module.exports = {
   getAllCollections,
   getBestSellers,
+  getAllCategories,
 };
