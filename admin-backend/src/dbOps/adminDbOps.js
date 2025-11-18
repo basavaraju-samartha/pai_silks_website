@@ -132,6 +132,16 @@ class Cmds {
             throw err;
         }
     }
+
+    async getAllOrderData() {
+        try {
+            const [rows] = await pool.query(sqlqueries.orders.getAllOrderData);
+            return rows;
+        } catch (error) {
+            console.error("Error in getOrderDetails:", error);
+            throw error;
+        }
+    }
 }
 
 module.exports = new Cmds();
