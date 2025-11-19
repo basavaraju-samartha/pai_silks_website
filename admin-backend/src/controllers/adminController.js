@@ -2,6 +2,7 @@ const adminAuthManager = require('../components/adminLoginManager/adminAuthManag
 const productManager = require('../components/productManager/productManager')
 const adminLoginManager = require('../components/adminLoginManager/adminLoginManager');
 const dashBoardManager = require('../components/dashBoardManager/dashBoardManager')
+const orderManager = require('../components/orderManager/orderManager')
 const utils = require('../utils/utils');
 const appDefines = require('../constants/appDefines');
 const CookiesKey = require('../constants/cookieKeys');
@@ -168,27 +169,40 @@ exports.getRecentOrders = async (req, res) => {
 };
 
 exports.getCategoryWiseCount = async (req, res) => {
-    try {
-        const result = await productManager.getCategoryWiseCount();
-        res.status(200).json({
-            success: true,
-            data: result
-        });
-    } catch (error) {
-        console.error("Error in getCategoryWiseCount Controller:", error);
-        res.status(500).json({ success: false, message: error.message });
-    }
+  try {
+    const result = await productManager.getCategoryWiseCount();
+    res.status(200).json({
+      success: true,
+      data: result
+    });
+  } catch (error) {
+    console.error("Error in getCategoryWiseCount Controller:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 exports.getAllProductDetails = async (req, res) => {
-    try {
-        const result = await productManager.getAllProductDetails();
-        res.status(200).json({
-            success: true,
-            data: result
-        });
-    } catch (error) {
-        console.error("Error in getAllProductDetails Controller:", error);
-        res.status(500).json({ success: false, message: error.message });
-    }
+  try {
+    const result = await productManager.getAllProductDetails();
+    res.status(200).json({
+      success: true,
+      data: result
+    });
+  } catch (error) {
+    console.error("Error in getAllProductDetails Controller:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+exports.getOrderDetails = async (req, res) => {
+  try {
+    const result = await orderManager.getOrderDetails();
+    res.status(200).json({
+      success: true,
+      data: result
+    })
+  } catch (error) {
+    console.error("Error to get AllOrderDetails Controller:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
 };

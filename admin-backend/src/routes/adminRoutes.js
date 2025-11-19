@@ -15,4 +15,6 @@ router.get('/get-category-count', adminController.getCategoryWiseCount);
 
 router.get('/get-all-product-details', adminController.getAllProductDetails);
 
+router.get('/get-order-detils',adminController.getOrderDetails);
+
 module.exports = router;
