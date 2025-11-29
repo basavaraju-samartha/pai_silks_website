@@ -19,6 +19,7 @@ router.get('/categories', customerController.getAllCategories);
 //To get productbyID
 router.get('/:productId', customerController.getProductById);
 
-
+// get products by category
+router.get('/products/:category', customerController.getProductsByCategory);
 
 module.exports = router;

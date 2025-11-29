@@ -76,6 +76,13 @@ const sqlqueries = {
       p.regular_price, p.selling_price, ps.stock_qty;
 `,
 
+getProductsByCategory: `
+      SELECT * 
+      FROM product 
+      WHERE category = ? AND is_deleted = 0
+      ORDER BY name;
+    `,
+
 
 
   

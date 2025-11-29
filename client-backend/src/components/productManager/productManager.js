@@ -47,6 +47,16 @@ const getProductById = async (productId) => {
   }
 };
 
+//Get all the products of a category
+const getProductsByCategory = async (category) => {
+  try {
+    return await dbCmds.getProductsByCategory(category);
+  } catch (err) {
+    console.error("Error in getProductsByCategory:", err);
+    throw err;
+  }
+};
+
 
 
 module.exports = {
@@ -54,4 +64,5 @@ module.exports = {
   getBestSellers,
   getAllCategories,
   getProductById,
+  getProductsByCategory,
 };

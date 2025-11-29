@@ -122,6 +122,17 @@ async getProductByIdWithImages(productId) {
   }
 }
 
+// Get products by category
+async getProductsByCategory(category) {
+  try {
+    const [rows] = await pool.query(sqlqueries.product.getProductsByCategory, [category]);
+    return rows;
+  } catch (err) {
+    console.error("Error in getProductsByCategory:", err);
+    throw err;
+  }
+}
+
   
 }
 
