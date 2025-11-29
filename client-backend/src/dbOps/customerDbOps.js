@@ -133,7 +133,98 @@ async getProductsByCategory(category) {
   }
 }
 
-  
+// Check if product already exists
+async checkWishlist(user_id, product_id) {
+  try {
+    const [rows] = await pool.query(sqlqueries.wishlist.checkWishlist, [
+      user_id,
+      product_id,
+    ]);
+    return rows;
+  } catch (err) {
+    console.error("Error in checkWishlist:", err);
+    throw err;
+  }
+}
+
+// Add product to wishlist
+async addToWishlist(user_id, product_id) {
+  try {
+    const [rows] = await pool.query(sqlqueries.wishlist.addToWishlist, [
+      user_id,
+      product_id,
+    ]);
+    return rows;
+  } catch (err) {
+    console.error("Error in addToWishlist:", err);
+    throw err;
+  }
+}
+
+// Get all wishlist items for a user
+async getWishlist(user_id) {
+  try {
+    const [rows] = await pool.query(sqlqueries.wishlist.getWishlist, [
+      user_id,
+    ]);
+    return rows;
+  } catch (err) {
+    console.error("Error in getWishlist:", err);
+    throw err;
+  }
+}
+
+
+
+// Check if product exists in wishlist
+async checkWishlist(user_id, product_id) {
+  const [rows] = await pool.query(sqlqueries.wishlist.checkWishlist, [
+    user_id,
+    product_id,
+  ]);
+  return rows;
+}
+
+// Wishlist count
+async wishlistCount(user_id) {
+  const [rows] = await pool.query(sqlqueries.wishlist.wishlistCount, [
+    user_id,
+  ]);
+  return rows[0];
+}
+
+// Check if product exists in cart
+async checkCart(user_id, product_id) {
+  const [rows] = await pool.query(sqlqueries.cart.checkCart, [
+    user_id,
+    product_id,
+  ]);
+  return rows;
+}
+
+// Add product to cart
+async addToCart(user_id, product_id) {
+  const [rows] = await pool.query(sqlqueries.cart.addToCart, [
+    user_id,
+    product_id,
+  ]);
+  return rows;
+}
+
+// Remove a product from wishlist
+async removeFromWishlist(user_id, product_id) {
+  try {
+    const [rows] = await pool.query(
+      sqlqueries.wishlist.removeFromWishlist,
+      [user_id, product_id]
+    );
+    return rows;
+  } catch (err) {
+    console.error("Error in removeFromWishlist:", err);
+    throw err;
+  }
+}
+
 }
 
 module.exports = new CustomerCmds();
