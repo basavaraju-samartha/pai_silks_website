@@ -208,3 +208,32 @@ exports.getProductById = async (req, res) => {
   }
 };
 
+// ---------------------- GET PRODUCT BY Category ----------------------
+
+exports.getProductsByCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
+
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        message: "Category is required"
+      });
+    }
+
+    const products = await productManager.getProductsByCategory(category);
+
+    return res.status(200).json({
+      success: true,
+      data: products,
+      message: "Products fetched successfully"
+    });
+  } catch (error) {
+    console.error("Error in getProductsByCategory Controller:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Failed to fetch products"
+    });
+  }
+};
+
