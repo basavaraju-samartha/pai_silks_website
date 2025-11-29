@@ -83,11 +83,57 @@ getProductsByCategory: `
       ORDER BY name;
     `,
 
+    
 
 
   
     
-  }
+  },
+
+
+    wishlist: {
+    checkWishlist: `
+      SELECT wishlist_id 
+      FROM wishlist 
+      WHERE user_id = ? AND product_id = ?;
+    `,
+
+    addToWishlist: `
+      INSERT INTO wishlist (user_id, product_id) 
+      VALUES (?, ?);
+    `,
+
+    getWishlist: `
+      SELECT w.wishlist_id, p.*
+      FROM wishlist w
+      JOIN product p ON w.product_id = p.id
+      WHERE w.user_id = ?
+      ORDER BY w.added_at DESC;
+    `,
+
+    removeFromWishlist: `
+      DELETE FROM wishlist 
+      WHERE user_id = ? AND product_id = ?;
+    `,
+
+    wishlistCount: `
+    SELECT COUNT(*) AS count FROM wishlist WHERE user_id = ?;
+  `,
+},
+
+    cart: {
+  // Check if product already exists in cart
+  checkCart: `
+    SELECT * FROM cart WHERE user_id = ? AND product_id = ?;
+  `,
+  
+  // Add product to cart (default quantity 1)
+  addToCart: `
+    INSERT INTO cart (user_id, product_id, quantity, added_at)
+    VALUES (?, ?, 1, NOW());
+  `
+},
+
 
   
 };

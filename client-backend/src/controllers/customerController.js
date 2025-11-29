@@ -237,3 +237,156 @@ exports.getProductsByCategory = async (req, res) => {
   }
 };
 
+
+// ====== ADD TO WISHLIST ======
+exports.addToWishlist = async (req, res) => {
+  const { user_id, product_id } = req.body;
+
+  if (!user_id || !product_id) {
+    return res.status(400).json({
+      success: false,
+      message: "user_id and product_id are required",
+    });
+  }
+
+  try {
+    const result = await productManager.addToWishlist(user_id, product_id);
+
+    if (result.already) {
+      return res.status(200).json({
+        success: true,
+        message: "Product already in wishlist",
+      });
+    }
+
+    return res.status(201).json({
+      success: true,
+      message: "Product added to wishlist",
+    });
+
+  } catch (error) {
+    console.error("Error in addToWishlist controller:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to add product to wishlist",
+    });
+  }
+};
+
+// ====== GET WISHLIST ITEMS ======
+exports.getWishlist = async (req, res) => {
+  try {
+    const user_id = req.params.user_id;
+
+    if (!user_id) {
+      return res.status(400).json({
+        success: false,
+        message: "user_id is required",
+      });
+    }
+
+    const result = await productManager.getWishlist(user_id);
+
+    res.status(200).json({
+      success: true,
+      data: result,
+      message: "Wishlist fetched successfully",
+    });
+  } catch (err) {
+    console.error("Error in getWishlist Controller:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch wishlist",
+    });
+  }
+};
+
+// ====== REMOVE FROM WISHLIST ======
+exports.removeWishlist = async (req, res) => {
+  const { user_id, product_id } = req.body;
+
+  if (!user_id || !product_id) {
+    return res.status(400).json({
+      success: false,
+      message: "user_id and product_id are required",
+    });
+  }
+
+  try {
+    await productManager.removeWishlist(user_id, product_id);
+    return res.status(200).json({
+      success: true,
+      message: "Product removed from wishlist",
+    });
+
+  } catch (error) {
+    console.error("Error in removeWishlist controller:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to remove from wishlist",
+    });
+  }
+};
+
+exports.checkWishlist = async (req, res) => {
+  try {
+    const user_id = parseInt(req.query.user_id);
+    const product_id = parseInt(req.query.product_id);
+
+    if (!user_id || !product_id) {
+      return res.status(400).json({
+        success: false,
+        message: "user_id and product_id are required",
+      });
+    }
+
+    const result = await productManager.checkWishlist(user_id, product_id);
+
+    res.status(200).json({
+      success: true,
+      exists: result.length > 0,
+    });
+  } catch (err) {
+    console.error("Error in checkWishlist:", err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+
+exports.wishlistCount = async (req, res) => {
+  try {
+    const user_id = req.params.user_id;
+
+    const result = await productManager.wishlistCount(user_id);
+
+    res.status(200).json({
+      success: true,
+      count: result.count,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+
+exports.moveWishlistToCart = async (req, res) => {
+  try {
+    const { user_id, product_id } = req.body;
+
+    if (!user_id || !product_id) {
+      return res.status(400).json({
+        success: false,
+        message: "user_id and product_id are required",
+      });
+    }
+
+    await productManager.moveWishlistToCart(user_id, product_id);
+
+    res.status(200).json({
+      success: true,
+      message: "Moved product from wishlist to cart",
+    });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+};
